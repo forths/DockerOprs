@@ -1,0 +1,41 @@
+官方网站：https://docs.docker.com/install/linux/docker-ce/ubuntu/
+To install Docker CE, you need the 64-bit version of one of these Ubuntu versions:
+    Bionic 18.04 (LTS)
+    Xenial 16.04 (LTS)
+    Trusty 14.04 (LTS)
+Docker CE is supported on Ubuntu on x86_64, armhf, s390x (IBM Z), and ppc64le (IBM Power) architectures.
+ppc64le and s390x limitations: Packages for IBM Z and Power architectures are only available on Ubuntu Xenial and above.
+
+Uninstall old versions
+Older versions of Docker were called docker or docker-engine. If these are installed, uninstall them:
+$ sudo apt-get remove docker docker-engine docker.io
+The contents of /var/lib/docker/, including images, containers, volumes, and networks, are preserved. The Docker CE package is now called docker-ce.
+
+Install using the repository
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+to verify the fingerprint 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88
+sudo apt-key fingerprint 0EBFCD88
+
+go on
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce
+
+查看可用
+apt-cache madison docker-ce
+
+to install a special verison
+sudo apt-get install docker-ce=<VERSION>
+
+verify if it is ok.
+sudo docker run hello-world
