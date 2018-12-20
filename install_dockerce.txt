@@ -39,3 +39,9 @@ sudo apt-get install docker-ce=<VERSION>
 
 verify if it is ok.
 sudo docker run hello-world
+
+
+uninstall Docker CE
+$ sudo apt-get purge docker-ce
+$ sudo rm -rf /var/lib/docker
+
